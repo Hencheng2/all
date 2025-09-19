@@ -150,50 +150,56 @@
         
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
         }
         
         .service-card {
             background-color: var(--medium-green);
             border-radius: 10px;
-            padding: 30px;
+            padding: 25px;
             text-align: center;
             transition: transform 0.3s, box-shadow 0.3s;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
         
         .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
+            transform: translateY(-8px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
         }
         
         .service-icon {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             color: var(--accent-orange);
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
         
         .service-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
+            font-size: 1.4rem;
+            margin-bottom: 12px;
             color: var(--white);
         }
         
         .service-card p {
             color: var(--light-gray);
             margin-bottom: 20px;
+            flex-grow: 1;
+            font-size: 0.95rem;
         }
         
         .btn {
             display: inline-block;
             background-color: var(--accent-orange);
             color: var(--white);
-            padding: 12px 25px;
+            padding: 10px 20px;
             border-radius: 5px;
             text-decoration: none;
             font-weight: 600;
             transition: background-color 0.3s;
+            font-size: 0.9rem;
         }
         
         .btn:hover {
@@ -363,6 +369,12 @@
         }
         
         /* Responsive Design */
+        @media (max-width: 1200px) {
+            .services-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+        }
+        
         @media (max-width: 992px) {
             .nav-links {
                 position: fixed;
@@ -418,6 +430,15 @@
                 padding-right: 0;
                 margin-bottom: 30px;
             }
+            
+            .services-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 20px;
+            }
+            
+            .service-card {
+                padding: 20px;
+            }
         }
         
         @media (max-width: 768px) {
@@ -433,8 +454,26 @@
                 font-size: 1.8rem;
             }
             
+            .services-grid {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+                margin: 0 auto;
+            }
+            
             .service-card {
-                padding: 20px;
+                padding: 20px 15px;
+            }
+            
+            .service-icon {
+                font-size: 2rem;
+            }
+            
+            .service-card h3 {
+                font-size: 1.3rem;
+            }
+            
+            .service-card p {
+                font-size: 0.9rem;
             }
         }
         
@@ -448,11 +487,20 @@
             }
             
             .btn {
-                padding: 10px 20px;
+                padding: 8px 16px;
+                font-size: 0.85rem;
             }
             
             .contact-details a {
                 font-size: 0.9rem;
+            }
+            
+            .services-grid {
+                gap: 15px;
+            }
+            
+            .service-card {
+                padding: 15px;
             }
         }
     </style>
@@ -502,7 +550,7 @@
                     </div>
                     <h3>HTML Code Viewer</h3>
                     <p>View HTML in different screen sizes, upload HTML files, and separate CSS and JS from HTML code with our powerful viewer tool.</p>
-                    <a href="#" class="btn">Use Tool</a>
+                    <a href="https://hencheng2.github.io/html-live-preview/" class="btn">Use Tool</a>
                 </div>
                 
                 <div class="service-card">
@@ -511,7 +559,7 @@
                     </div>
                     <h3>Unidoc Editor</h3>
                     <p>All document editors in one place. Edit any document format with our comprehensive editor tool.</p>
-                    <a href="#" class="btn">Use Tool</a>
+                    <a href="https://hencheng2.github.io/doc/" class="btn">Use Tool</a>
                 </div>
                 
                 <div class="service-card">
@@ -520,7 +568,7 @@
                     </div>
                     <h3>Code Runner</h3>
                     <p>Run Python, HTML, CSS, and JS code in a single project environment. Free and easy to use.</p>
-                    <a href="#" class="btn">Use Tool</a>
+                    <a href="https://hencheng2.github.io/nrun/" class="btn">Use Tool</a>
                 </div>
                 
                 <div class="service-card">
@@ -529,16 +577,16 @@
                     </div>
                     <h3>Python Skills</h3>
                     <p>Learn Python programming language with practical examples and step-by-step guidance.</p>
-                    <a href="#" class="btn">Use Tool</a>
+                    <a href="https://hencheng2.github.io/py/" class="btn">Use Tool</a>
                 </div>
                 
                 <div class="service-card">
                     <div class="service-icon">
                         <i class="fas fa-terminal"></i>
                     </div>
-                    <h3>Terminal</h3>
+                    <h3>Web Terminal</h3>
                     <p>Advanced terminal tool for executing commands and managing your development environment.</p>
-                    <a href="#" class="btn">Use Tool</a>
+                    <a href="https://hencheng2.github.io/pybash/" class="btn">Use Tool</a>
                 </div>
                 
                 <div class="service-card">
