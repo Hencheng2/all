@@ -80,6 +80,20 @@
             color: var(--accent-orange);
         }
         
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+        
+        .menu-toggle span {
+            width: 30px;
+            height: 3px;
+            background: var(--white);
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+        
         /* Hero Section with Profile */
         .hero {
             padding: 150px 0 100px;
@@ -262,6 +276,18 @@
             align-items: center;
         }
         
+        .contact-details a {
+            color: var(--white);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            transition: color 0.3s;
+        }
+        
+        .contact-details a:hover {
+            color: var(--accent-orange);
+        }
+        
         .contact-details i {
             color: var(--accent-orange);
             font-size: 1.2rem;
@@ -337,9 +363,42 @@
         }
         
         /* Responsive Design */
-        @media (max-width: 768px) {
+        @media (max-width: 992px) {
             .nav-links {
-                display: none;
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                background: var(--dark-green);
+                height: calc(100vh - 80px);
+                width: 100%;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: left 0.3s;
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .nav-links li {
+                margin: 20px 0;
+            }
+            
+            .menu-toggle {
+                display: flex;
+            }
+            
+            .menu-toggle.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+            
+            .menu-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .menu-toggle.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(7px, -6px);
             }
             
             .hero {
@@ -360,6 +419,42 @@
                 margin-bottom: 30px;
             }
         }
+        
+        @media (max-width: 768px) {
+            .profile-info h1 {
+                font-size: 2rem;
+            }
+            
+            .profile-info p {
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .service-card {
+                padding: 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 1.5rem;
+            }
+            
+            .profile-info h1 {
+                font-size: 1.8rem;
+            }
+            
+            .btn {
+                padding: 10px 20px;
+            }
+            
+            .contact-details a {
+                font-size: 0.9rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -374,6 +469,11 @@
                     <li><a href="#about">About</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
+                <div class="menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </nav>
         </div>
     </header>
@@ -402,7 +502,7 @@
                     </div>
                     <h3>HTML Code Viewer</h3>
                     <p>View HTML in different screen sizes, upload HTML files, and separate CSS and JS from HTML code with our powerful viewer tool.</p>
-                    <a href="https://hencheng2.github.io/html-live-preview/" class="btn">Use Tool</a>
+                    <a href="#" class="btn">Use Tool</a>
                 </div>
                 
                 <div class="service-card">
@@ -411,7 +511,7 @@
                     </div>
                     <h3>Unidoc Editor</h3>
                     <p>All document editors in one place. Edit any document format with our comprehensive editor tool.</p>
-                    <a href="https://hencheng2.github.io/doc/" class="btn">Use Tool</a>
+                    <a href="#" class="btn">Use Tool</a>
                 </div>
                 
                 <div class="service-card">
@@ -480,20 +580,28 @@
                     <h3>Get In Touch</h3>
                     <ul class="contact-details">
                         <li>
-                            <i class="fas fa-phone"></i>
-                            <span>+254718257264 (Calls)</span>
+                            <a href="tel:+254718257264">
+                                <i class="fas fa-phone"></i>
+                                <span>+254718257264 (Calls)</span>
+                            </a>
                         </li>
                         <li>
-                            <i class="fab fa-whatsapp"></i>
-                            <span>+254740841120 (WhatsApp)</span>
+                            <a href="https://wa.me/254740841120" target="_blank">
+                                <i class="fab fa-whatsapp"></i>
+                                <span>+254740841120 (WhatsApp)</span>
+                            </a>
                         </li>
                         <li>
-                            <i class="fas fa-envelope"></i>
-                            <span>hochieng86@gmail.com</span>
+                            <a href="mailto:hochieng86@gmail.com">
+                                <i class="fas fa-envelope"></i>
+                                <span>hochieng86@gmail.com</span>
+                            </a>
                         </li>
                         <li>
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Nairobi, Kenya</span>
+                            <a href="https://www.google.com/maps/search/?api=1&query=Nairobi,Kenya" target="_blank">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Nairobi, Kenya</span>
+                            </a>
                         </li>
                     </ul>
                 </div>
@@ -537,6 +645,23 @@
     </footer>
 
     <script>
+        // Mobile menu toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+        
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
